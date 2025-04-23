@@ -1,0 +1,181 @@
+{% extends "base.html" %}
+
+{% block title %}On the Spot Transfer - Fast & Secure Money Transfers{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1>Send Money Globally with Confidence</h1>
+            <p>Fast, secure, and reliable money transfers from Ghana to Nigeria, USA, France, and Canada</p>
+            <div class="hero-buttons">
+                <a href="{{ url_for('transfer') }}" class="btn btn-primary">Send Money Now</a>
+                <a href="{{ url_for('services') }}" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="features">
+    <div class="container">
+        <h2 class="section-title">Why Choose On the Spot Transfer?</h2>
+        <div class="feature-cards">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>Fast</h3>
+                <p>Money arrives within minutes, not days. Our cutting-edge technology ensures your transfers happen instantly.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Secure</h3>
+                <p>Bank-level encryption and security protocols protect your money and personal information at all times.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <h3>Accessible</h3>
+                <p>Send money anytime, anywhere with our user-friendly online platform and mobile app.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h3>Reliable</h3>
+                <p>Count on us for consistent service with 99.9% successful transfers and dedicated customer support.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="how-it-works">
+    <div class="container">
+        <h2 class="section-title">How It Works</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Enter Amount</h3>
+                    <p>Choose how much you want to send and select your destination country.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Add Recipient</h3>
+                    <p>Enter your recipient's details to ensure the money goes to the right person.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Make Payment</h3>
+                    <p>Pay securely with Mobile Money, Visa, or Mastercard.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>Money Delivered</h3>
+                    <p>Your recipient gets the money within minutes!</p>
+                </div>
+            </div>
+        </div>
+        <div class="cta-button">
+            <a href="{{ url_for('transfer') }}" class="btn btn-primary">Send Money Now</a>
+        </div>
+    </div>
+</section>
+
+<section class="payment-methods">
+    <div class="container">
+        <h2 class="section-title">Payment Methods</h2>
+        <div class="payment-icons">
+            <div class="payment-icon">
+                <img src="{{ url_for('static', filename='images/mtn.png') }}" alt="MTN Mobile Money">
+                <p>MTN Mobile Money</p>
+            </div>
+            <div class="payment-icon">
+                <img src="{{ url_for('static', filename='images/telecel.png') }}" alt="Telecel Money">
+                <p>Telecel Money</p>
+            </div>
+            <div class="payment-icon">
+                <img src="{{ url_for('static', filename='images/at.png') }}" alt="AT Money">
+                <p>AT Money</p>
+            </div>
+            <div class="payment-icon">
+                <img src="{{ url_for('static', filename='images/visa.png') }}" alt="Visa">
+                <p>Visa</p>
+            </div>
+            <div class="payment-icon">
+                <img src="{{ url_for('static', filename='images/mastercard.png') }}" alt="Mastercard">
+                <p>Mastercard</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="testimonials">
+    <div class="container">
+        <h2 class="section-title">What Our Customers Say</h2>
+        <div class="testimonial-slider">
+            <div class="testimonial">
+                <div class="testimonial-content">
+                    <p>"I've been using On the Spot Transfer for over a year now to send money to my family in Nigeria. The transfers are always fast and the rates are competitive. Highly recommended!"</p>
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">
+                        <img src="{{ url_for('static', filename='images/avatar1.jpg') }}" alt="Customer">
+                    </div>
+                    <div class="author-info">
+                        <h4>Kwame Mensah</h4>
+                        <p>Accra, Ghana</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial">
+                <div class="testimonial-content">
+                    <p>"The mobile money option makes it so convenient to send funds to my daughter studying in the US. The money arrives in her account almost instantly. Great service!"</p>
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">
+                        <img src="{{ url_for('static', filename='images/avatar2.jpg') }}" alt="Customer">
+                    </div>
+                    <div class="author-info">
+                        <h4>Abena Osei</h4>
+                        <p>Kumasi, Ghana</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial">
+                <div class="testimonial-content">
+                    <p>"I was skeptical at first, but after trying On the Spot Transfer, I won't go back to traditional banks for sending money abroad. The fees are lower and the service is excellent."</p>
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">
+                        <img src="{{ url_for('static', filename='images/avatar3.jpg') }}" alt="Customer">
+                    </div>
+                    <div class="author-info">
+                        <h4>Daniel Agyei</h4>
+                        <p>Takoradi, Ghana</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta">
+    <div class="container">
+        <div class="cta-content">
+            <h2>Ready to experience the fastest way to send money?</h2>
+            <p>Join thousands of satisfied customers who trust On the Spot Transfer for their money transfer needs.</p>
+            <a href="{{ url_for('transfer') }}" class="btn btn-primary">Start Your Transfer</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

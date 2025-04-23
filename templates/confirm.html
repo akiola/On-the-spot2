@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% block title %}Confirm Transfer - On the Spot Transfer{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/confirm.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <div class="container">
+        <h1>Confirm Your Transfer</h1>
+        <div class="breadcrumbs">
+            <a href="{{ url_for('index') }}">Home</a> / <a href="{{ url_for('transfer') }}">Send Money</a> / Confirm
+        </div>
+    </div>
+</section>
+
+<section class="confirm-section">
+    <div class="container">
+        <div class="confirm-container">
+            <div class="transfer-details">
+                <h2>Review Transfer Details</h2>
+                <p>Please review the details below before proceeding with your payment.</p>
+                
+                <div class="details-card">
+                    <div class="transaction-id">
+                        <span>Transaction ID:</span>
+                        <span>{{ transfer.transaction_id }}</span>
+                    </div>
+                    
+                    <div class="detail-section">
+                        <h3>Sending</h3>
+                        <div class="detail-row">
+                            <div class="detail-label">Amount:</div>
+                            <div class="detail-value">{{ transfer.amount|round(2) }} GHS</div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-label">Transfer Fee:</div>
+                            <div class="detail-value">{{ transfer.fee_amount|round(2) }} GHS</div>
+                        </div>
+                        <div class="detail-row total">
+                            <div class="detail-label">Total to Pay:</div>
+                            <div class="detail-value">{{ transfer.total_amount|round(2) }} GHS</div>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-section">
+                        <h3>Recipient Gets</h3>
+                        <div class="detail-row">
+                            <div class="detail-label">Amount:</div>
+                            <div class="detail-value">{{ transfer.received_amount|round(2) }} {{ transfer.currency }}</div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-label">Exchange Rate:</div>
+                            <div class="detail-value">1 GHS = {{ transfer.exchange_rate }} {{ transfer.currency }}</div>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-section">
+                        <h3>Recipient Details</h3>
+                        <div class="detail-row">
+                            <div class="detail-label">Name:</div>
+                            <div class="detail-value">{{ transfer.recipient_name }}</div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-label">Account/Mobile:</div>
+                            <div class="detail-value">{{ transfer.recipient_account }}</div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-label">Country:</div>
+                            <div class="detail-value">{{ transfer.country }}</div>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-section">
+                        <h3>Payment Method</h3>
+                        <div class="detail-row">
+                            <div class="detail-label">Method:</div>
+                            <div class="detail-value payment-method">
+                                {% if transfer.payment_method == 'mtn' %}
+                                <img src="{{ url_for('static', filename='images/mtn.png') }}" alt="MTN">
+                                <span>MTN Mobile Money</span>
+                                {% elif transfer.payment_method == 'telecel' %}
+                                <img src="{{ url_for('static', filename='images/telecel.png') }}" alt="Telecel">
+                                <span>Telecel Money</span>
+                                {% elif transfer.payment_method == 'at' %}
+                                <img src="{{ url_for('static', filename='images/at.png') }}" alt="AT">
+                                <span>AT Money</span>
+                                {% elif transfer.payment_method == 'card' %}
+                                <img src="{{ url_for('static', filename='images/card.png') }}" alt="Card">
+                                <span>Visa/Mastercard</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="payment-options">
+                    <div class="form-actions">
+                        <a href="{{ url_for('transfer') }}" class="btn btn-secondary">Edit Transfer</a>
+                        
+                        {% if transfer.payment_method in ['mtn', 'telecel', 'at'] %}
+                        <form action="{{ url_for('confirm') }}" method="POST" style="display: inline;">
+                            <button type="submit" class="btn btn-primary">Continue to Mobile Money Payment</button>
+                        </form>
+                        {% else %}
+                        <form action="{{ url_for('confirm') }}" method="POST" style="display: inline;">
+                            <button type="submit" class="btn btn-primary">Continue to Card Payment</button>
+                        </form>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

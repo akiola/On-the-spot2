@@ -1,0 +1,228 @@
+{% extends "base.html" %}
+
+{% block title %}About Us - On the Spot Transfer{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <div class="container">
+        <h1>About Us</h1>
+        <div class="breadcrumbs">
+            <a href="{{ url_for('index') }}">Home</a> / About Us
+        </div>
+    </div>
+</section>
+
+<section class="about-intro">
+    <div class="container">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>Our Story</h2>
+                <p>Founded in 2020, On the Spot Transfer was born out of a simple vision: to make international money transfers from Ghana fast, secure, and accessible to everyone. Our founder, after experiencing the frustration of slow and expensive traditional money transfer services, set out to create a better solution.</p>
+                <p>What started as a small operation serving the Ghana-Nigeria corridor has now expanded to include transfers to the United States, France, and Canada, with plans to add more countries in the near future.</p>
+                <p>Today, we're proud to serve thousands of customers across Ghana, helping them send money to their loved ones abroad quickly and affordably.</p>
+            </div>
+            <div class="about-image">
+                <img src="{{ url_for('static', filename='images/about-image.jpg') }}" alt="About On the Spot Transfer">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="mission-vision">
+    <div class="container">
+        <div class="mission-vision-cards">
+            <div class="mv-card mission">
+                <div class="icon">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+                <h3>Our Mission</h3>
+                <p>To provide fast, secure, and affordable money transfer services that connect Ghanaians to their loved ones around the world, empowering financial inclusion and cross-border economic activity.</p>
+            </div>
+            <div class="mv-card vision">
+                <div class="icon">
+                    <i class="fas fa-eye"></i>
+                </div>
+                <h3>Our Vision</h3>
+                <p>To be the leading money transfer service in West Africa, known for reliability, innovation, and customer-centric solutions that bridge financial gaps across borders.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="values">
+    <div class="container">
+        <h2 class="section-title">Our Core Values</h2>
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="value-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Security</h3>
+                <p>We prioritize the security of your money and information above all else, employing industry-leading encryption and security measures.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>Speed</h3>
+                <p>We understand that time is critical when sending money, which is why we ensure transfers are processed and delivered as quickly as possible.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">
+                    <i class="fas fa-user-friends"></i>
+                </div>
+                <h3>Customer-Centric</h3>
+                <p>Our customers are at the heart of everything we do. We continuously listen to feedback and improve our services to meet their needs.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">
+                    <i class="fas fa-hand-holding-usd"></i>
+                </div>
+                <h3>Affordability</h3>
+                <p>We believe in fair and transparent pricing, offering competitive exchange rates and low fees to maximize the value of your transfers.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h3>Integrity</h3>
+                <p>We operate with honesty and transparency in all our dealings, building trust with our customers and partners.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h3>Innovation</h3>
+                <p>We continuously seek new ways to improve our services, embracing technology to make money transfers simpler and more efficient.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="team">
+    <div class="container">
+        <h2 class="section-title">Our Leadership Team</h2>
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="member-photo">
+                    <img src="{{ url_for('static', filename='images/team1.jpg') }}" alt="Team Member">
+                </div>
+                <h3>Kwame Akoto</h3>
+                <p class="member-role">Founder & CEO</p>
+                <p class="member-bio">With over 15 years in fintech and banking, Kwame founded On the Spot Transfer to revolutionize money transfers from Ghana.</p>
+            </div>
+            <div class="team-member">
+                <div class="member-photo">
+                    <img src="{{ url_for('static', filename='images/team2.jpg') }}" alt="Team Member">
+                </div>
+                <h3>Ama Serwaa</h3>
+                <p class="member-role">Chief Operations Officer</p>
+                <p class="member-bio">Ama brings extensive experience in operations management, ensuring our services run smoothly and efficiently.</p>
+            </div>
+            <div class="team-member">
+                <div class="member-photo">
+                    <img src="{{ url_for('static', filename='images/team3.jpg') }}" alt="Team Member">
+                </div>
+                <h3>Kofi Mensah</h3>
+                <p class="member-role">Chief Technology Officer</p>
+                <p class="member-bio">A tech innovator with a passion for digital solutions, Kofi leads our technological development and security protocols.</p>
+            </div>
+            <div class="team-member">
+                <div class="member-photo">
+                    <img src="{{ url_for('static', filename='images/team4.jpg') }}" alt="Team Member">
+                </div>
+                <h3>Abena Owusu</h3>
+                <p class="member-role">Head of Customer Experience</p>
+                <p class="member-bio">Dedicated to ensuring every customer has a seamless experience with our services from start to finish.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="achievements">
+    <div class="container">
+        <h2 class="section-title">Our Achievements</h2>
+        <div class="achievements-timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>2020</h3>
+                    <p>Founded in Accra with a focus on Ghana-Nigeria transfers</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>2021</h3>
+                    <p>Expanded services to include transfers to the United States</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>2022</h3>
+                    <p>Added France and Canada as destination countries</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>2023</h3>
+                    <p>Reached 10,000 successful transfers and introduced our mobile app</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>2024</h3>
+                    <p>Awarded "Best Money Transfer Service" at the Ghana Fintech Awards</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>2025</h3>
+                    <p>Celebrating 100,000+ successful transfers and planning expansion to more countries</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="partners">
+    <div class="container">
+        <h2 class="section-title">Our Partners</h2>
+        <p class="section-description">We work with trusted financial institutions and technology providers to ensure the best service for our customers.</p>
+        <div class="partner-logos">
+            <div class="partner-logo">
+                <img src="{{ url_for('static', filename='images/partner1.png') }}" alt="Partner">
+            </div>
+            <div class="partner-logo">
+                <img src="{{ url_for('static', filename='images/partner2.png') }}" alt="Partner">
+            </div>
+            <div class="partner-logo">
+                <img src="{{ url_for('static', filename='images/partner3.png') }}" alt="Partner">
+            </div>
+            <div class="partner-logo">
+                <img src="{{ url_for('static', filename='images/partner4.png') }}" alt="Partner">
+            </div>
+            <div class="partner-logo">
+                <img src="{{ url_for('static', filename='images/partner5.png') }}" alt="Partner">
+            </div>
+            <div class="partner-logo">
+                <img src="{{ url_for('static', filename='images/partner6.png') }}" alt="Partner">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta">
+    <div class="container">
+        <div class="cta-content">
+            <h2>Ready to experience the On the Spot difference?</h2>
+            <p>Join thousands of satisfied customers who trust us for their money transfer needs.</p>
+            <a href="{{ url_for('transfer') }}" class="btn btn-primary">Send Money Now</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

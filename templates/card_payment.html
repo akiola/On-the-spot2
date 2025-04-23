@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+
+{% block title %}Card Payment - On the Spot Transfer{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/payment.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <div class="container">
+        <h1>Card Payment</h1>
+        <div class="breadcrumbs">
+            <a href="{{ url_for('index') }}">Home</a> / <a href="{{ url_for('transfer') }}">Send Money</a> / <a href="{{ url_for('confirm') }}">Confirm</a> / Payment
+        </div>
+    </div>
+</section>
+
+<section class="payment-section">
+    <div class="container">
+        <div class="payment-container">
+            <div class="payment-summary">
+                <h3>Transfer Summary</h3>
+                <div class="summary-card">
+                    <div class="summary-row">
+                        <span>Transaction ID:</span>
+                        <span>{{ transfer.transaction_id }}</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Amount to Send:</span>
+                        <span>{{ transfer.amount|round(2) }} GHS</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Transfer Fee:</span>
+                        <span>{{ transfer.fee_amount|round(2) }} GHS</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total to Pay:</span>
+                        <span>{{ transfer.total_amount|round(2) }} GHS</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Recipient Gets:</span>
+                        <span>{{ transfer.received_amount|round(2) }} {{ transfer.currency }}</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="payment-form-container">
+                <div class="form-header">
+                    <h2>
+                        <img src="{{ url_for('static', filename='images/card.png') }}" alt="Card">
+                        Card Payment
+                    </h2>
+                    <p>Enter your card details to complete the payment</p>
+                    <div class="card-logos">
+                        <img src="{{ url_for('static', filename='images/visa.png') }}" alt="Visa">
+                        <img src="{{ url_for('static', filename='images/mastercard.png') }}" alt="Mastercard">
+                    </div>
+                </div>
+                
+                <form action="{{ url_for('card_payment') }}" method="POST">
+                    <div class="form-group">
+                        <label for="card_name">Cardholder Name</label>
+                        <input type="text" id="card_name" name="card_name" placeholder="Name as appears on card" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="card_number">Card Number</label>
+                        <div class="card-input">
+                            <input type="text" id="card_number" name="card_number" placeholder="XXXX XXXX XXXX XXXX" maxlength="19" required>
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group half">
+                            <label for="expiry_date">Expiry Date</label>
+                            <input type="text" id="expiry_date" name="expiry_date" placeholder="MM/YY" maxlength="5" required>
+                        </div>
+                        <div class="form-group half">
+                            <label for="cvv">CVV</label>
+                            <div class="cvv-input">
+                                <input type="text" id="cvv" name="cvv" placeholder="XXX" maxlength="3" required>
+                                <i class="fas fa-question-circle" title="3-digit code on back of card"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="billing_address">Billing Address</label>
+                        <textarea id="billing_address" name="billing_address" rows="3" required></textarea>
+                    </div>
+                    
+                    <div class="form-group checkbox">
+                        <input type="checkbox" id="save_card" name="save_card">
+                        <label for="save_card">Save card details for future transfers</label>
+                    </div>
+                    
+                    <div class="secure-payment-notice">
+                        <i class="fas fa-lock"></i>
+                        <span>Your payment is secured with SSL encryption</span>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <a href="{{ url_for('confirm') }}" class="btn btn-secondary">Back</a>
+                        <button type="submit" class="btn btn-primary">Make Payment</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Format card number with spaces
+        const cardNumberInput = document.getElementById('card_number');
+        cardNumberInput.addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\s+/g, '');
+            if (value.length > 0) {
+                value = value.match(new RegExp('.{1,4}', 'g')).join(' ');
+            }
+            e.target.value = value;
+        });
+        
+        // Format expiry date with slash
+        const expiryDateInput = document.getElementById('expiry_date');
+        expiryDateInput.addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 2) {
+                value = value.substring(0, 2) + '/' + value.substring(2, 4);
+            }
+            e.target.value = value;
+        });
+        
+        // Allow only numbers for CVV
+        const cvvInput = document.getElementById('cvv');
+        cvvInput.addEventListener('input', function(e) {
+            e.target.value = e.target.value.replace(/\D/g, '');
+        });
+    });
+</script>
+{% endblock %}

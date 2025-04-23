@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% block title %}Transfer Successful - On the Spot Transfer{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/success.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="success-section">
+    <div class="container">
+        <div class="success-container">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h1>Transfer Successful!</h1>
+            <p>Your money is on its way to {{ transfer.recipient_name }}</p>
+            
+            <div class="receipt-card">
+                <div class="receipt-header">
+                    <div class="logo">
+                        <span class="logo-text">On the Spot</span>
+                        <span class="logo-highlight">Transfer</span>
+                    </div>
+                    <div class="receipt-title">Transfer Receipt</div>
+                </div>
+                
+                <div class="receipt-details">
+                    <div class="receipt-row">
+                        <span>Transaction ID:</span>
+                        <span>{{ transfer.transaction_id }}</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span>Date & Time:</span>
+                        <span>{{ transfer.date }}</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span>From:</span>
+                        <span>Ghana (GHS)</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span>To:</span>
+                        <span>{{ transfer.country }} ({{ transfer.currency }})</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span>Recipient:</span>
+                        <span>{{ transfer.recipient_name }}</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span>Account/Mobile:</span>
+                        <span>{{ transfer.recipient_account }}</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span>Amount Sent:</span>
+                        <span>{{ transfer.amount|round(2) }} GHS</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span>Transfer Fee:</span>
+                        <span>{{ transfer.fee_amount|round(2) }} GHS</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span>Total Paid:</span>
+                        <span>{{ transfer.total_amount|round(2) }} GHS</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span>Exchange Rate:</span>
+                        <span>1 GHS = {{ transfer.exchange_rate }} {{ transfer.currency }}</span>
+                    </div>
+                    <div class="receipt-row total">
+                        <span>Recipient Receives:</span>
+                        <span>{{ transfer.received_amount|round(2) }} {{ transfer.currency }}</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span>Payment Method:</span>
+                        <span>
+                            {% if transfer.payment_method == 'mtn' %}
+                            MTN Mobile Money
+                            {% elif transfer.payment_method == 'telecel' %}
+                            Telecel Money
+                            {% elif transfer.payment_method == 'at' %}
+                            AT Money
+                            {% elif transfer.payment_method == 'card' %}
+                            Visa/Mastercard
+                            {% endif %}
+                        </span>
+                    </div>
+                    <div class="receipt-row">
+                        <span>Status:</span>
+                        <span class="status-complete">Complete</span>
+                    </div>
+                </div>
+                
+                <div class="receipt-footer">
+                    <div class="qr-code"></div>
+                    <p>Thank you for using On the Spot Transfer</p>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="btn btn-secondary" onclick="window.print()">
+                    <i class="fas fa-print"></i> Print Receipt
+                </button>
+                <a href="{{ url_for('index') }}" class="btn btn-primary">Back to Home</a>
+            </div>
+            
+            <div class="additional-options">
+                <h3>What would you like to do next?</h3>
+                <div class="option-buttons">
+                    <a href="{{ url_for('transfer') }}" class="option-button">
+                        <i class="fas fa-exchange-alt"></i>
+                        <span>Make Another Transfer</span>
+                    </a>
+                    <a href="{{ url_for('services') }}" class="option-button">
+                        <i class="fas fa-info-circle"></i>
+                        <span>View Our Services</span>
+                    </a>
+                    <a href="{{ url_for('contact') }}" class="option-button">
+                        <i class="fas fa-headset"></i>
+                        <span>Contact Support</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

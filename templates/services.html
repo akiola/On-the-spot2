@@ -1,0 +1,417 @@
+{% extends "base.html" %}
+
+{% block title %}Our Services - On the Spot Transfer{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <div class="container">
+        <h1>Our Services</h1>
+        <div class="breadcrumbs">
+            <a href="{{ url_for('index') }}">Home</a> / Services
+        </div>
+    </div>
+</section>
+
+<section class="services-intro">
+    <div class="container">
+        <div class="intro-content">
+            <h2>Fast, Secure Money Transfers</h2>
+            <p>At On the Spot Transfer, we provide reliable money transfer services from Ghana to multiple countries around the world. Our platform is designed to make sending money abroad as simple and convenient as possible.</p>
+            <p>Whether you're supporting family, paying for education, or conducting business, we offer competitive rates and multiple payment options to suit your needs.</p>
+        </div>
+    </div>
+</section>
+
+<section class="destinations">
+    <div class="container">
+        <h2 class="section-title">Our Destinations</h2>
+        <div class="destination-cards">
+            <div class="destination-card">
+                <div class="destination-flag">
+                    <img src="{{ url_for('static', filename='images/flags/nigeria.png') }}" alt="Nigeria Flag">
+                </div>
+                <h3>Nigeria</h3>
+                <div class="exchange-info">
+                    <p>Current Rate: <span>1 GHS = {{ exchange_rates['NGN'] }} NGN</span></p>
+                    <p>Transfer Fee: <span>{{ transfer_fees['NGN'] }}%</span></p>
+                </div>
+                <p>Send money to Nigeria with instant delivery to bank accounts and mobile wallets across the country.</p>
+                <a href="{{ url_for('transfer') }}" class="btn btn-secondary">Send to Nigeria</a>
+            </div>
+            
+            <div class="destination-card">
+                <div class="destination-flag">
+                    <img src="{{ url_for('static', filename='images/flags/usa.png') }}" alt="USA Flag">
+                </div>
+                <h3>United States</h3>
+                <div class="exchange-info">
+                    <p>Current Rate: <span>1 GHS = {{ exchange_rates['USD'] }} USD</span></p>
+                    <p>Transfer Fee: <span>{{ transfer_fees['USD'] }}%</span></p>
+                </div>
+                <p>Fast transfers to the USA with direct deposits to bank accounts, mobile wallets, and cash pickup options.</p>
+                <a href="{{ url_for('transfer') }}" class="btn btn-secondary">Send to USA</a>
+            </div>
+            
+            <div class="destination-card">
+                <div class="destination-flag">
+                    <img src="{{ url_for('static', filename='images/flags/france.png') }}" alt="France Flag">
+                </div>
+                <h3>France</h3>
+                <div class="exchange-info">
+                    <p>Current Rate: <span>1 GHS = {{ exchange_rates['EUR'] }} EUR</span></p>
+                    <p>Transfer Fee: <span>{{ transfer_fees['EUR'] }}%</span></p>
+                </div>
+                <p>Send money to France with competitive exchange rates and quick delivery to European bank accounts.</p>
+                <a href="{{ url_for('transfer') }}" class="btn btn-secondary">Send to France</a>
+            </div>
+            
+            <div class="destination-card">
+                <div class="destination-flag">
+                    <img src="{{ url_for('static', filename='images/flags/canada.png') }}" alt="Canada Flag">
+                </div>
+                <h3>Canada</h3>
+                <div class="exchange-info">
+                    <p>Current Rate: <span>1 GHS = {{ exchange_rates['CAD'] }} CAD</span></p>
+                    <p>Transfer Fee: <span>{{ transfer_fees['CAD'] }}%</span></p>
+                </div>
+                <p>Reliable transfers to Canada with direct deposits to all major Canadian banks and financial institutions.</p>
+                <a href="{{ url_for('transfer') }}" class="btn btn-secondary">Send to Canada</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="payment-methods-section">
+    <div class="container">
+        <h2 class="section-title">Payment Methods</h2>
+        <p class="section-description">We offer multiple convenient ways to fund your transfers, ensuring you can send money anytime, anywhere.</p>
+        
+        <div class="payment-methods-grid">
+            <div class="payment-method-card">
+                <div class="method-icon">
+                    <img src="{{ url_for('static', filename='images/mtn.png') }}" alt="MTN Mobile Money">
+                </div>
+                <h3>MTN Mobile Money</h3>
+                <p>Send money directly from your MTN Mobile Money wallet. Instant and convenient.</p>
+                <ul class="method-features">
+                    <li><i class="fas fa-check"></i> Available 24/7</li>
+                    <li><i class="fas fa-check"></i> Instant processing</li>
+                    <li><i class="fas fa-check"></i> No additional fees</li>
+                </ul>
+            </div>
+            
+            <div class="payment-method-card">
+                <div class="method-icon">
+                    <img src="{{ url_for('static', filename='images/telecel.png') }}" alt="Telecel Money">
+                </div>
+                <h3>Telecel Money</h3>
+                <p>Use your Telecel Money account to fund transfers quickly and securely.</p>
+                <ul class="method-features">
+                    <li><i class="fas fa-check"></i> Simple confirmation</li>
+                    <li><i class="fas fa-check"></i> Secure transactions</li>
+                    <li><i class="fas fa-check"></i> Real-time processing</li>
+                </ul>
+            </div>
+            
+            <div class="payment-method-card">
+                <div class="method-icon">
+                    <img src="{{ url_for('static', filename='images/at.png') }}" alt="AT Money">
+                </div>
+                <h3>AT Money</h3>
+                <p>AT Money users can easily fund transfers through our integrated platform.</p>
+                <ul class="method-features">
+                    <li><i class="fas fa-check"></i> Direct integration</li>
+                    <li><i class="fas fa-check"></i> Fast authentication</li>
+                    <li><i class="fas fa-check"></i> Secure processing</li>
+                </ul>
+            </div>
+            
+            <div class="payment-method-card">
+                <div class="method-icon card-icons">
+                    <img src="{{ url_for('static', filename='images/visa.png') }}" alt="Visa">
+                    <img src="{{ url_for('static', filename='images/mastercard.png') }}" alt="Mastercard">
+                </div>
+                <h3>Credit/Debit Cards</h3>
+                <p>Pay with your Visa or Mastercard for added convenience and flexibility.</p>
+                <ul class="method-features">
+                    <li><i class="fas fa-check"></i> Secure encryption</li>
+                    <li><i class="fas fa-check"></i> Save card for future use</li>
+                    <li><i class="fas fa-check"></i> International cards accepted</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="how-it-works">
+    <div class="container">
+        <h2 class="section-title">How It Works</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Enter Transfer Details</h3>
+                    <p>Specify how much you want to send and select your destination country.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Add Recipient Information</h3>
+                    <p>Enter your recipient's details to ensure the money goes to the right person.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Choose Payment Method</h3>
+                    <p>Select your preferred payment method: Mobile Money or Card.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>Confirm and Pay</h3>
+                    <p>Review your transfer details and complete the payment.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <h3>Money Delivered</h3>
+                    <p>Your recipient receives the money within minutes!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="service-features">
+    <div class="container">
+        <h2 class="section-title">Why Choose Our Services?</h2>
+        <div class="features-grid">
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>Speed</h3>
+                <p>Transfers typically arrive within minutes, not days.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Security</h3>
+                <p>Bank-level security and encryption for every transaction.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-hand-holding-usd"></i>
+                </div>
+                <h3>Competitive Rates</h3>
+                <p>Get some of the best exchange rates in the market.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>Convenience</h3>
+                <p>Send money anytime, anywhere from your phone or computer.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h3>Customer Support</h3>
+                <p>Dedicated support team ready to assist you.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Track Transfers</h3>
+                <p>Real-time updates on the status of your transfer.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="exchange-rates">
+    <div class="container">
+        <h2 class="section-title">Today's Exchange Rates</h2>
+        <p class="section-description">We offer competitive exchange rates updated daily to give you the best value for your money.</p>
+        
+        <div class="exchange-table-container">
+            <table class="exchange-table">
+                <thead>
+                    <tr>
+                        <th>Country</th>
+                        <th>Currency</th>
+                        <th>Rate (1 GHS =)</th>
+                        <th>Transfer Fee</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="country-cell">
+                                <img src="{{ url_for('static', filename='images/flags/nigeria.png') }}" alt="Nigeria">
+                                <span>Nigeria</span>
+                            </div>
+                        </td>
+                        <td>NGN</td>
+                        <td>{{ exchange_rates['NGN'] }}</td>
+                        <td>{{ transfer_fees['NGN'] }}%</td>
+                        <td><a href="{{ url_for('transfer') }}" class="btn btn-sm">Send Now</a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="country-cell">
+                                <img src="{{ url_for('static', filename='images/flags/usa.png') }}" alt="USA">
+                                <span>United States</span>
+                            </div>
+                        </td>
+                        <td>USD</td>
+                        <td>{{ exchange_rates['USD'] }}</td>
+                        <td>{{ transfer_fees['USD'] }}%</td>
+                        <td><a href="{{ url_for('transfer') }}" class="btn btn-sm">Send Now</a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="country-cell">
+                                <img src="{{ url_for('static', filename='images/flags/france.png') }}" alt="France">
+                                <span>France</span>
+                            </div>
+                        </td>
+                        <td>EUR</td>
+                        <td>{{ exchange_rates['EUR'] }}</td>
+                        <td>{{ transfer_fees['EUR'] }}%</td>
+                        <td><a href="{{ url_for('transfer') }}" class="btn btn-sm">Send Now</a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="country-cell">
+                                <img src="{{ url_for('static', filename='images/flags/canada.png') }}" alt="Canada">
+                                <span>Canada</span>
+                            </div>
+                        </td>
+                        <td>CAD</td>
+                        <td>{{ exchange_rates['CAD'] }}</td>
+                        <td>{{ transfer_fees['CAD'] }}%</td>
+                        <td><a href="{{ url_for('transfer') }}" class="btn btn-sm">Send Now</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="rate-notice">
+            <p><i class="fas fa-info-circle"></i> Exchange rates are updated daily at 9:00 AM GMT. Rates shown are indicative and may vary slightly at the time of transaction.</p>
+        </div>
+    </div>
+</section>
+
+<section class="faq">
+    <div class="container">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>How long does a transfer take?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Most transfers are completed within minutes. However, depending on the destination and payment method, some transfers may take up to 24 hours to process.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>What payment methods can I use?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>We accept payments through MTN Mobile Money, Telecel Money, AT Money, and Visa/Mastercard credit or debit cards.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Is there a minimum or maximum transfer amount?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>The minimum transfer amount is 10 GHS. The maximum transfer amount varies by destination but is typically up to 50,000 GHS per transaction for verified accounts.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>How do I track my transfer?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>You can track your transfer using the transaction ID provided at the time of payment. Simply enter this ID on our website or contact our customer support for updates.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>What if my recipient doesn't receive the money?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>In the rare event that a transfer is not received, please contact our customer support with your transaction ID. We will investigate the issue and resolve it promptly.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Can I cancel a transfer?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Transfers can only be canceled if they have not yet been claimed by the recipient. Contact our customer support immediately if you need to cancel a transfer.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta">
+    <div class="container">
+        <div class="cta-content">
+            <h2>Ready to send money abroad?</h2>
+            <p>Experience fast, secure, and convenient money transfers with On the Spot Transfer.</p>
+            <a href="{{ url_for('transfer') }}" class="btn btn-primary">Start Your Transfer</a>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // FAQ accordion functionality
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                
+                // Close all FAQ items
+                faqItems.forEach(faqItem => {
+                    faqItem.classList.remove('active');
+                });
+                
+                // Open the clicked item if it wasn't active before
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}

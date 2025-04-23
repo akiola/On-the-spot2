@@ -1,0 +1,267 @@
+/* Confirmation and Payment Page Styles */
+
+.confirm-section,
+.payment-section {
+    padding: 60px 0;
+    background-color: #f9f9f9;
+}
+
+.confirm-container,
+.payment-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.transfer-details,
+.payment-summary {
+    flex: 1;
+    min-width: 300px;
+}
+
+.payment-form-container {
+    flex: 2;
+    min-width: 300px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    padding: 30px;
+}
+
+.details-card,
+.summary-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    padding: 25px;
+    margin-bottom: 30px;
+}
+
+.transaction-id {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.detail-section {
+    margin-bottom: 25px;
+}
+
+.detail-section:last-child {
+    margin-bottom: 0;
+}
+
+.detail-section h3 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    color: #333;
+    position: relative;
+    padding-bottom: 8px;
+}
+
+.detail-section h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background-color: #9370DB;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px dashed #eee;
+}
+
+.detail-row:last-child {
+    border-bottom: none;
+}
+
+.detail-label {
+    color: #666;
+}
+
+.detail-value {
+    font-weight: 600;
+    color: #333;
+}
+
+.detail-row.total {
+    font-weight: 700;
+    font-size: 1.1rem;
+    border-top: 1px solid #ddd;
+    margin-top: 10px;
+    padding-top: 15px;
+}
+
+.payment-method {
+    display: flex;
+    align-items: center;
+}
+
+.payment-method img {
+    height: 24px;
+    margin-right: 10px;
+}
+
+.payment-options {
+    margin-top: 30px;
+}
+
+/* Payment Pages Styles */
+
+.payment-summary h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: #333;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.payment-summary h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background-color: #9370DB;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px dashed #eee;
+}
+
+.summary-row:last-child {
+    border-bottom: none;
+}
+
+.summary-row.total {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #333;
+    border-top: 1px solid #ddd;
+    margin-top: 10px;
+    padding-top: 15px;
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.form-header h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-header h2 img {
+    height: 30px;
+    margin-right: 10px;
+}
+
+.form-header p {
+    color: #666;
+}
+
+.card-logos {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.card-logos img {
+    height: 30px;
+}
+
+.payment-instructions {
+    background-color: #f9f9f9;
+    border-radius: 6px;
+    padding: 20px;
+    margin: 30px 0;
+}
+
+.payment-instructions h3 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.payment-instructions ol {
+    list-style-type: decimal;
+    padding-left: 20px;
+}
+
+.payment-instructions li {
+    margin-bottom: 10px;
+}
+
+.card-input,
+.cvv-input {
+    position: relative;
+}
+
+.card-input i,
+.cvv-input i {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+}
+
+.form-group.checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-group.checkbox input {
+    width: auto;
+}
+
+.form-group.checkbox label {
+    margin-bottom: 0;
+}
+
+.secure-payment-notice {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    color: #333;
+}
+
+.secure-payment-notice i {
+    color: #5cb85c;
+}
+
+@media (max-width: 768px) {
+    .confirm-container,
+    .payment-container {
+        flex-direction: column;
+    }
+}

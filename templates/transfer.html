@@ -1,0 +1,223 @@
+{% extends "base.html" %}
+
+{% block title %}Send Money - On the Spot Transfer{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/transfer.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <div class="container">
+        <h1>Send Money</h1>
+        <div class="breadcrumbs">
+            <a href="{{ url_for('index') }}">Home</a> / Send Money
+        </div>
+    </div>
+</section>
+
+<section class="transfer-section">
+    <div class="container">
+        <div class="transfer-container">
+            <div class="transfer-sidebar">
+                <div class="exchange-rates-card">
+                    <h3>Today's Exchange Rates</h3>
+                    <ul class="exchange-rates">
+                        <li>
+                            <div class="country"><img src="{{ url_for('static', filename='images/flags/nigeria.png') }}" alt="Nigeria"> Nigeria (NGN)</div>
+                            <div class="rate">1 GHS = {{ exchange_rates['NGN'] }} NGN</div>
+                        </li>
+                        <li>
+                            <div class="country"><img src="{{ url_for('static', filename='images/flags/usa.png') }}" alt="USA"> USA (USD)</div>
+                            <div class="rate">1 GHS = {{ exchange_rates['USD'] }} USD</div>
+                        </li>
+                        <li>
+                            <div class="country"><img src="{{ url_for('static', filename='images/flags/france.png') }}" alt="France"> France (EUR)</div>
+                            <div class="rate">1 GHS = {{ exchange_rates['EUR'] }} EUR</div>
+                        </li>
+                        <li>
+                            <div class="country"><img src="{{ url_for('static', filename='images/flags/canada.png') }}" alt="Canada"> Canada (CAD)</div>
+                            <div class="rate">1 GHS = {{ exchange_rates['CAD'] }} CAD</div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="transfer-fees-card">
+                    <h3>Transfer Fees</h3>
+                    <ul class="transfer-fees">
+                        <li>
+                            <div class="country">Nigeria (NGN)</div>
+                            <div class="fee">{{ transfer_fees['NGN'] }}%</div>
+                        </li>
+                        <li>
+                            <div class="country">USA (USD)</div>
+                            <div class="fee">{{ transfer_fees['USD'] }}%</div>
+                        </li>
+                        <li>
+                            <div class="country">France (EUR)</div>
+                            <div class="fee">{{ transfer_fees['EUR'] }}%</div>
+                        </li>
+                        <li>
+                            <div class="country">Canada (CAD)</div>
+                            <div class="fee">{{ transfer_fees['CAD'] }}%</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="transfer-form-container">
+                <div class="form-header">
+                    <h2>Send Money Abroad</h2>
+                    <p>Fill in the details below to start your transfer</p>
+                </div>
+                <form id="transferForm" action="{{ url_for('transfer') }}" method="POST">
+                    <div class="form-step active" id="step1">
+                        <h3>Step 1: Transfer Details</h3>
+                        <div class="form-group">
+                            <label for="amount">Amount to Send (GHS)</label>
+                            <input type="number" id="amount" name="amount" min="10" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="currency">Destination Country & Currency</label>
+                            <select id="currency" name="currency" required>
+                                <option value="" disabled selected>Select destination</option>
+                                {% for code, name in country_names.items() %}
+                                <option value="{{ code }}">{{ name }} ({{ code }})</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="transfer-summary">
+                            <div class="summary-row">
+                                <span>You send:</span>
+                                <span id="sendAmount">0.00 GHS</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Transfer fee:</span>
+                                <span id="feeAmount">0.00 GHS</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Exchange rate:</span>
+                                <span id="exchangeRate">1 GHS = 0.00</span>
+                            </div>
+                            <div class="summary-row total">
+                                <span>Recipient gets:</span>
+                                <span id="receiveAmount">0.00</span>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-primary" id="nextToStep2">Continue</button>
+                        </div>
+                    </div>
+                    <div class="form-step" id="step2">
+                        <h3>Step 2: Recipient Information</h3>
+                        <div class="form-group">
+                            <label for="recipient_name">Recipient's Full Name</label>
+                            <input type="text" id="recipient_name" name="recipient_name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient_account">Recipient's Account/Mobile Number</label>
+                            <input type="text" id="recipient_account" name="recipient_account" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="payment_method">Payment Method</label>
+                            <select id="payment_method" name="payment_method" required>
+                                <option value="" disabled selected>Select payment method</option>
+                                <option value="mtn">MTN Mobile Money</option>
+                                <option value="telecel">Telecel Money</option>
+                                <option value="at">AT Money</option>
+                                <option value="card">Visa/Mastercard</option>
+                            </select>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" id="backToStep1">Back</button>
+                            <button type="submit" class="btn btn-primary">Continue to Payment</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Define exchange rates and fees from server data
+        const exchangeRates = {
+            {% for code, rate in exchange_rates.items() %}
+            '{{ code }}': {{ rate }},
+            {% endfor %}
+        };
+        
+        const transferFees = {
+            {% for code, fee in transfer_fees.items() %}
+            '{{ code }}': {{ fee }},
+            {% endfor %}
+        };
+        
+        const countryNames = {
+            {% for code, name in country_names.items() %}
+            '{{ code }}': '{{ name }}',
+            {% endfor %}
+        };
+
+        // Form elements
+        const amountInput = document.getElementById('amount');
+        const currencySelect = document.getElementById('currency');
+        const sendAmountDisplay = document.getElementById('sendAmount');
+        const feeAmountDisplay = document.getElementById('feeAmount');
+        const exchangeRateDisplay = document.getElementById('exchangeRate');
+        const receiveAmountDisplay = document.getElementById('receiveAmount');
+        
+        // Multi-step form navigation
+        const step1 = document.getElementById('step1');
+        const step2 = document.getElementById('step2');
+        const nextToStep2Button = document.getElementById('nextToStep2');
+        const backToStep1Button = document.getElementById('backToStep1');
+        
+        nextToStep2Button.addEventListener('click', function() {
+            // Validate step 1
+            if (amountInput.value && currencySelect.value) {
+                step1.classList.remove('active');
+                step2.classList.add('active');
+            } else {
+                alert('Please fill in all required fields');
+            }
+        });
+        
+        backToStep1Button.addEventListener('click', function() {
+            step2.classList.remove('active');
+            step1.classList.add('active');
+        });
+        
+        // Calculate and update transfer summary
+        function updateTransferSummary() {
+            const amount = parseFloat(amountInput.value) || 0;
+            const currency = currencySelect.value;
+            
+            if (amount && currency) {
+                const exchangeRate = exchangeRates[currency];
+                const feePercentage = transferFees[currency];
+                const feeAmount = (amount * feePercentage) / 100;
+                const receivedAmount = amount * exchangeRate;
+                
+                sendAmountDisplay.textContent = amount.toFixed(2) + ' GHS';
+                feeAmountDisplay.textContent = feeAmount.toFixed(2) + ' GHS';
+                exchangeRateDisplay.textContent = '1 GHS = ' + exchangeRate.toFixed(2) + ' ' + currency;
+                receiveAmountDisplay.textContent = receivedAmount.toFixed(2) + ' ' + currency;
+            } else {
+                sendAmountDisplay.textContent = '0.00 GHS';
+                feeAmountDisplay.textContent = '0.00 GHS';
+                exchangeRateDisplay.textContent = '1 GHS = 0.00';
+                receiveAmountDisplay.textContent = '0.00';
+            }
+        }
+        
+        // Event listeners for form inputs
+        amountInput.addEventListener('input', updateTransferSummary);
+        currencySelect.addEventListener('change', updateTransferSummary);
+        
+        // Initialize summary
+        updateTransferSummary();
+    });
+</script>
+{% endblock %}

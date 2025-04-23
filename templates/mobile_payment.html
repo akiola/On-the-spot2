@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block title %}Mobile Money Payment - On the Spot Transfer{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/payment.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <div class="container">
+        <h1>Mobile Money Payment</h1>
+        <div class="breadcrumbs">
+            <a href="{{ url_for('index') }}">Home</a> / <a href="{{ url_for('transfer') }}">Send Money</a> / <a href="{{ url_for('confirm') }}">Confirm</a> / Payment
+        </div>
+    </div>
+</section>
+
+<section class="payment-section">
+    <div class="container">
+        <div class="payment-container">
+            <div class="payment-summary">
+                <h3>Transfer Summary</h3>
+                <div class="summary-card">
+                    <div class="summary-row">
+                        <span>Transaction ID:</span>
+                        <span>{{ transfer.transaction_id }}</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Amount to Send:</span>
+                        <span>{{ transfer.amount|round(2) }} GHS</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Transfer Fee:</span>
+                        <span>{{ transfer.fee_amount|round(2) }} GHS</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total to Pay:</span>
+                        <span>{{ transfer.total_amount|round(2) }} GHS</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Recipient Gets:</span>
+                        <span>{{ transfer.received_amount|round(2) }} {{ transfer.currency }}</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="payment-form-container">
+                <div class="form-header">
+                    <h2>
+                        {% if transfer.payment_method == 'mtn' %}
+                        <img src="{{ url_for('static', filename='images/mtn.png') }}" alt="MTN">
+                        MTN Mobile Money Payment
+                        {% elif transfer.payment_method == 'telecel' %}
+                        <img src="{{ url_for('static', filename='images/telecel.png') }}" alt="Telecel">
+                        Telecel Money Payment
+                        {% elif transfer.payment_method == 'at' %}
+                        <img src="{{ url_for('static', filename='images/at.png') }}" alt="AT">
+                        AT Money Payment
+                        {% endif %}
+                    </h2>
+                    <p>Enter your mobile money details to complete the payment</p>
+                </div>
+                
+                <form action="{{ url_for('mobile_payment') }}" method="POST">
+                    <div class="form-group">
+                        <label for="phone">Mobile Money Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="e.g., 024 123 4567" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="network">Mobile Network</label>
+                        <select id="network" name="network" required>
+                            {% if transfer.payment_method == 'mtn' %}
+                            <option value="mtn" selected>MTN</option>
+                            {% elif transfer.payment_method == 'telecel' %}
+                            <option value="telecel" selected>Telecel</option>
+                            {% elif transfer.payment_method == 'at' %}
+                            <option value="at" selected>AT</option>
+                            {% else %}
+                            <option value="mtn">MTN</option>
+                            <option value="telecel">Telecel</option>
+                            <option value="at">AT</option>
+                            {% endif %}
+                        </select>
+                    </div>
+                    
+                    <div class="payment-instructions">
+                        <h3>Payment Instructions</h3>
+                        <ol>
+                            <li>A payment request will be sent to your mobile phone.</li>
+                            <li>Enter your Mobile Money PIN to confirm the payment.</li>
+                            <li>You will receive a confirmation message once the payment is complete.</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <a href="{{ url_for('confirm') }}" class="btn btn-secondary">Back</a>
+                        <button type="submit" class="btn btn-primary">Make Payment</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
