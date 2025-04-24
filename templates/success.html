@@ -11,7 +11,12 @@
     <div class="container">
         <div class="success-container">
             <div class="success-icon">
-                <i class="fas fa-check-circle"></i>
+                <div class="logo-with-badge">
+                    <img src="{{ url_for('static', filename='images/companylogo.JPG') }}" alt="On the Spot Transfer" style="height: 80px; border-radius: 8px;">
+                    <div class="success-badge">
+                        <i class="fas fa-check"></i>
+                    </div>
+                </div>
             </div>
             <h1>Transfer Successful!</h1>
             <p>Your money is on its way to {{ transfer.recipient_name }}</p>
@@ -19,8 +24,7 @@
             <div class="receipt-card">
                 <div class="receipt-header">
                     <div class="logo">
-                        <span class="logo-text">On the Spot</span>
-                        <span class="logo-highlight">Transfer</span>
+                        <img src="{{ url_for('static', filename='images/companylogo.JPG') }}" alt="On the Spot Transfer" style="height: 40px; margin-right: 10px;">
                     </div>
                     <div class="receipt-title">Transfer Receipt</div>
                 </div>
@@ -64,11 +68,11 @@
                     </div>
                     <div class="receipt-row">
                         <span>Exchange Rate:</span>
-                        <span>1 GHS = {{ transfer.exchange_rate }} {{ transfer.currency }}</span>
+                        <span>1 {{ transfer.currency }} = {% if transfer.currency == 'NGN' %}{{ transfer.exchange_rate|round(4) }}{% else %}{{ transfer.exchange_rate|round(2) }}{% endif %} GHS</span>
                     </div>
                     <div class="receipt-row total">
                         <span>Recipient Receives:</span>
-                        <span>{{ transfer.received_amount|round(2) }} {{ transfer.currency }}</span>
+                        <span>{% if transfer.currency == 'NGN' %}{{ transfer.received_amount|round(4) }}{% else %}{{ transfer.received_amount|round(2) }}{% endif %} {{ transfer.currency }}</span>
                     </div>
                     <div class="receipt-row">
                         <span>Payment Method:</span>
@@ -91,7 +95,9 @@
                 </div>
                 
                 <div class="receipt-footer">
-                    <div class="qr-code"></div>
+                    <div class="receipt-logo">
+                        <img src="{{ url_for('static', filename='images/companylogo.JPG') }}" alt="On the Spot Transfer" style="height: 50px; border-radius: 4px;">
+                    </div>
                     <p>Thank you for using On the Spot Transfer</p>
                 </div>
             </div>

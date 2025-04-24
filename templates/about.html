@@ -14,15 +14,17 @@
 
 <section class="about-intro">
     <div class="container">
-        <div class="about-content">
-            <div class="about-text">
-                <h2>Our Story</h2>
-                <p>Founded in 2020, On the Spot Transfer was born out of a simple vision: to make international money transfers from Ghana fast, secure, and accessible to everyone. Our founder, after experiencing the frustration of slow and expensive traditional money transfer services, set out to create a better solution.</p>
-                <p>What started as a small operation serving the Ghana-Nigeria corridor has now expanded to include transfers to the United States, France, and Canada, with plans to add more countries in the near future.</p>
-                <p>Today, we're proud to serve thousands of customers across Ghana, helping them send money to their loved ones abroad quickly and affordably.</p>
-            </div>
-            <div class="about-image">
-                <img src="{{ url_for('static', filename='images/about-image.jpg') }}" alt="About On the Spot Transfer">
+        <div class="about-content" style="text-align: center;">
+            <div class="about-text" style="max-width: 800px; margin: 0 auto;">
+                <h2>Welcome to On the Spot Transfer</h2>
+                <p>Welcome to On the Spot Transfer, your trusted partner for seamless and efficient transfer solutions. Founded in 2025, we are dedicated to providing our clients with reliable, fast, and secure transfer services tailored to meet their unique needs.</p>
+                <p>At On the Spot Transfer, we understand that time is of the essence. If you are transferring money, our mission is to ensure that your money reaches their destination safely and promptly. Our cutting-edge technology, combined with a team of experienced professionals, allows us to offer innovative solutions that simplify the transfer process.</p>
+                <p>We pride ourselves on our commitment to customer satisfaction. Our knowledgeable staff is available to assist you every step of the way, ensuring a smooth and hassle-free experience. We believe in building lasting relationships with our clients, based on trust, transparency, and exceptional service.</p>
+                <p>As we continue to grow and evolve, our focus remains on enhancing our services and expanding our reach. We are dedicated to staying ahead of industry trends and adopting best practices that benefit our clients.</p>
+                <div style="display: flex; align-items: center; justify-content: center; margin: 30px 0;">
+                    <img src="{{ url_for('static', filename='images/companylogo.JPG') }}" alt="On the Spot Transfer Logo" style="height: 80px; margin-right: 15px;">
+                    <p style="font-weight: bold; font-size: 1.1em; text-align: left;">Thank you for choosing On the Spot Transfer. We look forward to serving you!</p>
+                </div>
             </div>
         </div>
     </div>
@@ -30,6 +32,10 @@
 
 <section class="mission-vision">
     <div class="container">
+        <h2 class="section-title">About On the Spot Transfer</h2>
+        <div style="display: flex; justify-content: center; margin-bottom: 40px;">
+            <img src="{{ url_for('static', filename='images/companylogo.JPG') }}" alt="On the Spot Transfer Logo" style="height: 100px;">
+        </div>
         <div class="mission-vision-cards">
             <div class="mv-card mission">
                 <div class="icon">
@@ -102,38 +108,106 @@
 <section class="team">
     <div class="container">
         <h2 class="section-title">Our Leadership Team</h2>
-        <div class="team-grid">
-            <div class="team-member">
-                <div class="member-photo">
-                    <img src="{{ url_for('static', filename='images/team1.jpg') }}" alt="Team Member">
+        <div class="team-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 25px;">
+            <div class="team-member" style="background-color: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); transition: all 0.3s ease;">
+                <div class="member-photo" style="height: 200px; overflow: hidden; position: relative;">
+                    <img src="{{ url_for('static', filename='images/1.JPG') }}" alt="Priscilla Frimpong-Manso" style="width: 100%; height: 100%; object-fit: cover; object-position: center top;">
                 </div>
-                <h3>Kwame Akoto</h3>
-                <p class="member-role">Founder & CEO</p>
-                <p class="member-bio">With over 15 years in fintech and banking, Kwame founded On the Spot Transfer to revolutionize money transfers from Ghana.</p>
+                <div style="padding: 15px;">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 5px;">Priscilla Frimpong-Manso</h3>
+                    <p style="color: #9370DB; font-weight: 600; margin-bottom: 10px;">CEO</p>
+                    <p style="color: #666; font-size: 0.9rem; line-height: 1.5;">Priscilla leads the company with a vision for innovative money transfer solutions.</p>
+                </div>
             </div>
-            <div class="team-member">
-                <div class="member-photo">
-                    <img src="{{ url_for('static', filename='images/team2.jpg') }}" alt="Team Member">
+            <div class="team-member" style="background-color: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); transition: all 0.3s ease;">
+                <div class="member-photo" style="height: 200px; overflow: hidden; position: relative;">
+                    <img src="{{ url_for('static', filename='images/2.JPG') }}" alt="Christabel Ann Arthur" style="width: 100%; height: 100%; object-fit: cover; object-position: center top;">
                 </div>
-                <h3>Ama Serwaa</h3>
-                <p class="member-role">Chief Operations Officer</p>
-                <p class="member-bio">Ama brings extensive experience in operations management, ensuring our services run smoothly and efficiently.</p>
+                <div style="padding: 15px;">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 5px;">Christabel Ann Arthur</h3>
+                    <p style="color: #9370DB; font-weight: 600; margin-bottom: 10px;">Chief Financial Officer</p>
+                    <p style="color: #666; font-size: 0.9rem; line-height: 1.5;">Christabel oversees the financial strategy and ensuring fiscal responsibility.</p>
+                </div>
             </div>
-            <div class="team-member">
-                <div class="member-photo">
-                    <img src="{{ url_for('static', filename='images/team3.jpg') }}" alt="Team Member">
+            <div class="team-member" style="background-color: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); transition: all 0.3s ease;">
+                <div class="member-photo" style="height: 200px; overflow: hidden; position: relative;">
+                    <img src="{{ url_for('static', filename='images/3.JPG') }}" alt="Richlove Sai" style="width: 100%; height: 100%; object-fit: cover; object-position: center top;">
                 </div>
-                <h3>Kofi Mensah</h3>
-                <p class="member-role">Chief Technology Officer</p>
-                <p class="member-bio">A tech innovator with a passion for digital solutions, Kofi leads our technological development and security protocols.</p>
+                <div style="padding: 15px;">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 5px;">Richlove Sai</h3>
+                    <p style="color: #9370DB; font-weight: 600; margin-bottom: 10px;">Compliance Officer</p>
+                    <p style="color: #666; font-size: 0.9rem; line-height: 1.5;">Richlove ensures all operations adhere to legal and regulatory standards.</p>
+                </div>
             </div>
-            <div class="team-member">
-                <div class="member-photo">
-                    <img src="{{ url_for('static', filename='images/team4.jpg') }}" alt="Team Member">
+            <div class="team-member" style="background-color: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); transition: all 0.3s ease;">
+                <div class="member-photo" style="height: 200px; overflow: hidden; position: relative;">
+                    <img src="{{ url_for('static', filename='images/4.JPG') }}" alt="Assira Wendy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top;">
                 </div>
-                <h3>Abena Owusu</h3>
-                <p class="member-role">Head of Customer Experience</p>
-                <p class="member-bio">Dedicated to ensuring every customer has a seamless experience with our services from start to finish.</p>
+                <div style="padding: 15px;">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 5px;">Assira Wendy</h3>
+                    <p style="color: #9370DB; font-weight: 600; margin-bottom: 10px;">Technology Manager</p>
+                    <p style="color: #666; font-size: 0.9rem; line-height: 1.5;">Wendy manages the technological infrastructure for seamless transactions.</p>
+                </div>
+            </div>
+            <div class="team-member" style="background-color: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); transition: all 0.3s ease;">
+                <div class="member-photo" style="height: 200px; overflow: hidden; position: relative;">
+                    <img src="{{ url_for('static', filename='images/5.JPG') }}" alt="Eyram Adzah" style="width: 100%; height: 100%; object-fit: cover; object-position: center top;">
+                </div>
+                <div style="padding: 15px;">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 5px;">Eyram Adzah</h3>
+                    <p style="color: #9370DB; font-weight: 600; margin-bottom: 10px;">Human Resource Manager</p>
+                    <p style="color: #666; font-size: 0.9rem; line-height: 1.5;">Eyram manages employee relations and fostering a positive workplace culture.</p>
+                </div>
+            </div>
+            <div class="team-member" style="background-color: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); transition: all 0.3s ease;">
+                <div class="member-photo" style="height: 200px; overflow: hidden; position: relative;">
+                    <img src="{{ url_for('static', filename='images/6.JPG') }}" alt="Earl Anim Boamah" style="width: 100%; height: 100%; object-fit: cover; object-position: center top;">
+                </div>
+                <div style="padding: 15px;">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 5px;">Earl Anim Boamah</h3>
+                    <p style="color: #9370DB; font-weight: 600; margin-bottom: 10px;">Operations Manager</p>
+                    <p style="color: #666; font-size: 0.9rem; line-height: 1.5;">Earl helps in coordinating daily activities to enhance operational efficiency.</p>
+                </div>
+            </div>
+            <div class="team-member" style="background-color: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); transition: all 0.3s ease;">
+                <div class="member-photo" style="height: 200px; overflow: hidden; position: relative;">
+                    <img src="{{ url_for('static', filename='images/7.JPG') }}" alt="Jacob Galley" style="width: 100%; height: 100%; object-fit: cover; object-position: center top;">
+                </div>
+                <div style="padding: 15px;">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 5px;">Jacob Galley</h3>
+                    <p style="color: #9370DB; font-weight: 600; margin-bottom: 10px;">Marketing Manager</p>
+                    <p style="color: #666; font-size: 0.9rem; line-height: 1.5;">Jacob assists in driving brand presence and outreach to attract new customers.</p>
+                </div>
+            </div>
+            <div class="team-member" style="background-color: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); transition: all 0.3s ease;">
+                <div class="member-photo" style="height: 200px; overflow: hidden; position: relative;">
+                    <img src="{{ url_for('static', filename='images/8.JPG') }}" alt="Mabel Opoku" style="width: 100%; height: 100%; object-fit: cover; object-position: center top;">
+                </div>
+                <div style="padding: 15px;">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 5px;">Mabel Opoku</h3>
+                    <p style="color: #9370DB; font-weight: 600; margin-bottom: 10px;">Customer Service Personnel</p>
+                    <p style="color: #666; font-size: 0.9rem; line-height: 1.5;">Mabel provides exceptional support and assistance to clients.</p>
+                </div>
+            </div>
+            <div class="team-member" style="background-color: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); transition: all 0.3s ease;">
+                <div class="member-photo" style="height: 200px; overflow: hidden; position: relative;">
+                    <img src="{{ url_for('static', filename='images/9.JPG') }}" alt="Josephine Djangmah" style="width: 100%; height: 100%; object-fit: cover; object-position: center top;">
+                </div>
+                <div style="padding: 15px;">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 5px;">Josephine Djangmah</h3>
+                    <p style="color: #9370DB; font-weight: 600; margin-bottom: 10px;">Customer Service Personnel</p>
+                    <p style="color: #666; font-size: 0.9rem; line-height: 1.5;">Josephine ensures customer satisfaction and resolving inquiries effectively.</p>
+                </div>
+            </div>
+            <div class="team-member" style="background-color: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); transition: all 0.3s ease;">
+                <div class="member-photo" style="height: 200px; overflow: hidden; position: relative;">
+                    <img src="{{ url_for('static', filename='images/10.JPG') }}" alt="Henritta Yaw" style="width: 100%; height: 100%; object-fit: cover; object-position: center top;">
+                </div>
+                <div style="padding: 15px;">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 5px;">Henritta Yaw</h3>
+                    <p style="color: #9370DB; font-weight: 600; margin-bottom: 10px;">Customer Service Personnel</p>
+                    <p style="color: #666; font-size: 0.9rem; line-height: 1.5;">Henritta enhances the customer experience through effective communication.</p>
+                </div>
             </div>
         </div>
     </div>
@@ -146,43 +220,8 @@
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
-                    <h3>2020</h3>
-                    <p>Founded in Accra with a focus on Ghana-Nigeria transfers</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <h3>2021</h3>
-                    <p>Expanded services to include transfers to the United States</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <h3>2022</h3>
-                    <p>Added France and Canada as destination countries</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <h3>2023</h3>
-                    <p>Reached 10,000 successful transfers and introduced our mobile app</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <h3>2024</h3>
-                    <p>Awarded "Best Money Transfer Service" at the Ghana Fintech Awards</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
                     <h3>2025</h3>
-                    <p>Celebrating 100,000+ successful transfers and planning expansion to more countries</p>
+                    <p>Founded in Accra with a focus on transfers to Nigeria, United Kingdom, United States, France and Canada</p>
                 </div>
             </div>
         </div>
@@ -193,24 +232,18 @@
     <div class="container">
         <h2 class="section-title">Our Partners</h2>
         <p class="section-description">We work with trusted financial institutions and technology providers to ensure the best service for our customers.</p>
-        <div class="partner-logos">
-            <div class="partner-logo">
-                <img src="{{ url_for('static', filename='images/partner1.png') }}" alt="Partner">
+        <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 40px; margin-top: 40px;">
+            <div style="background-color: #fff; border-radius: 8px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); padding: 20px; width: 200px; height: 120px; display: flex; align-items: center; justify-content: center;">
+                <img src="{{ url_for('static', filename='images/partner1.JPG') }}" alt="Partner" style="max-width: 160px; max-height: 80px; object-fit: contain;">
             </div>
-            <div class="partner-logo">
-                <img src="{{ url_for('static', filename='images/partner2.png') }}" alt="Partner">
+            <div style="background-color: #fff; border-radius: 8px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); padding: 20px; width: 200px; height: 120px; display: flex; align-items: center; justify-content: center;">
+                <img src="{{ url_for('static', filename='images/partner2.JPG') }}" alt="Partner" style="max-width: 160px; max-height: 80px; object-fit: contain;">
             </div>
-            <div class="partner-logo">
-                <img src="{{ url_for('static', filename='images/partner3.png') }}" alt="Partner">
+            <div style="background-color: #fff; border-radius: 8px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); padding: 20px; width: 200px; height: 120px; display: flex; align-items: center; justify-content: center;">
+                <img src="{{ url_for('static', filename='images/partner3.JPG') }}" alt="Partner" style="max-width: 160px; max-height: 80px; object-fit: contain;">
             </div>
-            <div class="partner-logo">
-                <img src="{{ url_for('static', filename='images/partner4.png') }}" alt="Partner">
-            </div>
-            <div class="partner-logo">
-                <img src="{{ url_for('static', filename='images/partner5.png') }}" alt="Partner">
-            </div>
-            <div class="partner-logo">
-                <img src="{{ url_for('static', filename='images/partner6.png') }}" alt="Partner">
+            <div style="background-color: #fff; border-radius: 8px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); padding: 20px; width: 200px; height: 120px; display: flex; align-items: center; justify-content: center;">
+                <img src="{{ url_for('static', filename='images/partner4.JPG') }}" alt="Partner" style="max-width: 160px; max-height: 80px; object-fit: contain;">
             </div>
         </div>
     </div>

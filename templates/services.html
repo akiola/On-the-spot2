@@ -14,6 +14,9 @@
 
 <section class="services-intro">
     <div class="container">
+        <div style="display: flex; justify-content: center; margin-bottom: 30px;">
+            <img src="{{ url_for('static', filename='images/companylogo.JPG') }}" alt="On the Spot Transfer Logo" style="height: 80px;">
+        </div>
         <div class="intro-content">
             <h2>Fast, Secure Money Transfers</h2>
             <p>At On the Spot Transfer, we provide reliable money transfer services from Ghana to multiple countries around the world. Our platform is designed to make sending money abroad as simple and convenient as possible.</p>
@@ -28,11 +31,11 @@
         <div class="destination-cards">
             <div class="destination-card">
                 <div class="destination-flag">
-                    <img src="{{ url_for('static', filename='images/flags/nigeria.png') }}" alt="Nigeria Flag">
+                    <i class="fas fa-globe-africa fa-2x" style="color: #9370DB;"></i>
                 </div>
                 <h3>Nigeria</h3>
                 <div class="exchange-info">
-                    <p>Current Rate: <span>1 GHS = {{ exchange_rates['NGN'] }} NGN</span></p>
+                    <p>Current Rate: <span>1 NGN = {{ exchange_rates['NGN']|round(4) }} GHS</span></p>
                     <p>Transfer Fee: <span>{{ transfer_fees['NGN'] }}%</span></p>
                 </div>
                 <p>Send money to Nigeria with instant delivery to bank accounts and mobile wallets across the country.</p>
@@ -41,11 +44,24 @@
             
             <div class="destination-card">
                 <div class="destination-flag">
-                    <img src="{{ url_for('static', filename='images/flags/usa.png') }}" alt="USA Flag">
+                    <i class="fas fa-globe-europe fa-2x" style="color: #9370DB;"></i>
+                </div>
+                <h3>United Kingdom</h3>
+                <div class="exchange-info">
+                    <p>Current Rate: <span>1 GBP = {{ exchange_rates['GBP']|round(2) }} GHS</span></p>
+                    <p>Transfer Fee: <span>{{ transfer_fees['GBP'] }}%</span></p>
+                </div>
+                <p>Fast transfers to the UK with direct deposits to bank accounts, mobile wallets, and cash pickup options.</p>
+                <a href="{{ url_for('transfer') }}" class="btn btn-secondary">Send to UK</a>
+            </div>
+            
+            <div class="destination-card">
+                <div class="destination-flag">
+                    <i class="fas fa-globe-americas fa-2x" style="color: #9370DB;"></i>
                 </div>
                 <h3>United States</h3>
                 <div class="exchange-info">
-                    <p>Current Rate: <span>1 GHS = {{ exchange_rates['USD'] }} USD</span></p>
+                    <p>Current Rate: <span>1 USD = {{ exchange_rates['USD']|round(2) }} GHS</span></p>
                     <p>Transfer Fee: <span>{{ transfer_fees['USD'] }}%</span></p>
                 </div>
                 <p>Fast transfers to the USA with direct deposits to bank accounts, mobile wallets, and cash pickup options.</p>
@@ -54,11 +70,11 @@
             
             <div class="destination-card">
                 <div class="destination-flag">
-                    <img src="{{ url_for('static', filename='images/flags/france.png') }}" alt="France Flag">
+                    <i class="fas fa-globe-europe fa-2x" style="color: #9370DB;"></i>
                 </div>
                 <h3>France</h3>
                 <div class="exchange-info">
-                    <p>Current Rate: <span>1 GHS = {{ exchange_rates['EUR'] }} EUR</span></p>
+                    <p>Current Rate: <span>1 EUR = {{ exchange_rates['EUR']|round(2) }} GHS</span></p>
                     <p>Transfer Fee: <span>{{ transfer_fees['EUR'] }}%</span></p>
                 </div>
                 <p>Send money to France with competitive exchange rates and quick delivery to European bank accounts.</p>
@@ -67,11 +83,11 @@
             
             <div class="destination-card">
                 <div class="destination-flag">
-                    <img src="{{ url_for('static', filename='images/flags/canada.png') }}" alt="Canada Flag">
+                    <i class="fas fa-globe-americas fa-2x" style="color: #9370DB;"></i>
                 </div>
                 <h3>Canada</h3>
                 <div class="exchange-info">
-                    <p>Current Rate: <span>1 GHS = {{ exchange_rates['CAD'] }} CAD</span></p>
+                    <p>Current Rate: <span>1 CAD = {{ exchange_rates['CAD']|round(2) }} GHS</span></p>
                     <p>Transfer Fee: <span>{{ transfer_fees['CAD'] }}%</span></p>
                 </div>
                 <p>Reliable transfers to Canada with direct deposits to all major Canadian banks and financial institutions.</p>
@@ -89,7 +105,7 @@
         <div class="payment-methods-grid">
             <div class="payment-method-card">
                 <div class="method-icon">
-                    <img src="{{ url_for('static', filename='images/mtn.png') }}" alt="MTN Mobile Money">
+                    <i class="fas fa-mobile-alt fa-3x" style="color: #9370DB;"></i>
                 </div>
                 <h3>MTN Mobile Money</h3>
                 <p>Send money directly from your MTN Mobile Money wallet. Instant and convenient.</p>
@@ -102,7 +118,7 @@
             
             <div class="payment-method-card">
                 <div class="method-icon">
-                    <img src="{{ url_for('static', filename='images/telecel.png') }}" alt="Telecel Money">
+                    <i class="fas fa-wallet fa-3x" style="color: #9370DB;"></i>
                 </div>
                 <h3>Telecel Money</h3>
                 <p>Use your Telecel Money account to fund transfers quickly and securely.</p>
@@ -115,7 +131,7 @@
             
             <div class="payment-method-card">
                 <div class="method-icon">
-                    <img src="{{ url_for('static', filename='images/at.png') }}" alt="AT Money">
+                    <i class="fas fa-money-bill-wave fa-3x" style="color: #9370DB;"></i>
                 </div>
                 <h3>AT Money</h3>
                 <p>AT Money users can easily fund transfers through our integrated platform.</p>
@@ -127,9 +143,8 @@
             </div>
             
             <div class="payment-method-card">
-                <div class="method-icon card-icons">
-                    <img src="{{ url_for('static', filename='images/visa.png') }}" alt="Visa">
-                    <img src="{{ url_for('static', filename='images/mastercard.png') }}" alt="Mastercard">
+                <div class="method-icon">
+                    <i class="fas fa-credit-card fa-3x" style="color: #9370DB;"></i>
                 </div>
                 <h3>Credit/Debit Cards</h3>
                 <p>Pay with your Visa or Mastercard for added convenience and flexibility.</p>
@@ -247,57 +262,44 @@
                     <tr>
                         <th>Country</th>
                         <th>Currency</th>
-                        <th>Rate (1 GHS =)</th>
+                        <th>Exchange Rate</th>
                         <th>Transfer Fee</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>
-                            <div class="country-cell">
-                                <img src="{{ url_for('static', filename='images/flags/nigeria.png') }}" alt="Nigeria">
-                                <span>Nigeria</span>
-                            </div>
-                        </td>
+                        <td>Nigeria</td>
                         <td>NGN</td>
-                        <td>{{ exchange_rates['NGN'] }}</td>
+                        <td>1 NGN = {{ exchange_rates['NGN']|round(4) }} GHS</td>
                         <td>{{ transfer_fees['NGN'] }}%</td>
                         <td><a href="{{ url_for('transfer') }}" class="btn btn-sm">Send Now</a></td>
                     </tr>
                     <tr>
-                        <td>
-                            <div class="country-cell">
-                                <img src="{{ url_for('static', filename='images/flags/usa.png') }}" alt="USA">
-                                <span>United States</span>
-                            </div>
-                        </td>
+                        <td>United Kingdom</td>
+                        <td>GBP</td>
+                        <td>1 GBP = {{ exchange_rates['GBP']|round(2) }} GHS</td>
+                        <td>{{ transfer_fees['GBP'] }}%</td>
+                        <td><a href="{{ url_for('transfer') }}" class="btn btn-sm">Send Now</a></td>
+                    </tr>
+                    <tr>
+                        <td>United States</td>
                         <td>USD</td>
-                        <td>{{ exchange_rates['USD'] }}</td>
+                        <td>1 USD = {{ exchange_rates['USD']|round(2) }} GHS</td>
                         <td>{{ transfer_fees['USD'] }}%</td>
                         <td><a href="{{ url_for('transfer') }}" class="btn btn-sm">Send Now</a></td>
                     </tr>
                     <tr>
-                        <td>
-                            <div class="country-cell">
-                                <img src="{{ url_for('static', filename='images/flags/france.png') }}" alt="France">
-                                <span>France</span>
-                            </div>
-                        </td>
+                        <td>France</td>
                         <td>EUR</td>
-                        <td>{{ exchange_rates['EUR'] }}</td>
+                        <td>1 EUR = {{ exchange_rates['EUR']|round(2) }} GHS</td>
                         <td>{{ transfer_fees['EUR'] }}%</td>
                         <td><a href="{{ url_for('transfer') }}" class="btn btn-sm">Send Now</a></td>
                     </tr>
                     <tr>
-                        <td>
-                            <div class="country-cell">
-                                <img src="{{ url_for('static', filename='images/flags/canada.png') }}" alt="Canada">
-                                <span>Canada</span>
-                            </div>
-                        </td>
+                        <td>Canada</td>
                         <td>CAD</td>
-                        <td>{{ exchange_rates['CAD'] }}</td>
+                        <td>1 CAD = {{ exchange_rates['CAD']|round(2) }} GHS</td>
                         <td>{{ transfer_fees['CAD'] }}%</td>
                         <td><a href="{{ url_for('transfer') }}" class="btn btn-sm">Send Now</a></td>
                     </tr>

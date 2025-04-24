@@ -24,20 +24,24 @@
                     <h3>Today's Exchange Rates</h3>
                     <ul class="exchange-rates">
                         <li>
-                            <div class="country"><img src="{{ url_for('static', filename='images/flags/nigeria.png') }}" alt="Nigeria"> Nigeria (NGN)</div>
-                            <div class="rate">1 GHS = {{ exchange_rates['NGN'] }} NGN</div>
+                            <div class="country"><img src="{{ url_for('static', filename='images/flags/nigeria.JPG') }}" alt="Nigeria"> Nigeria (NGN)</div>
+                            <div class="rate">1 NGN = {{ "%.4f"|format(exchange_rates['NGN']) }} GHS</div>
                         </li>
                         <li>
-                            <div class="country"><img src="{{ url_for('static', filename='images/flags/usa.png') }}" alt="USA"> USA (USD)</div>
-                            <div class="rate">1 GHS = {{ exchange_rates['USD'] }} USD</div>
+                            <div class="country"><img src="{{ url_for('static', filename='images/flags/UK.JPG') }}" alt="United Kingdom"> United Kingdom (GBP)</div>
+                            <div class="rate">1 GBP = {{ "%.2f"|format(exchange_rates['GBP']) }} GHS</div>
                         </li>
                         <li>
-                            <div class="country"><img src="{{ url_for('static', filename='images/flags/france.png') }}" alt="France"> France (EUR)</div>
-                            <div class="rate">1 GHS = {{ exchange_rates['EUR'] }} EUR</div>
+                            <div class="country"><img src="{{ url_for('static', filename='images/flags/US.JPG') }}" alt="USA"> USA (USD)</div>
+                            <div class="rate">1 USD = {{ "%.2f"|format(exchange_rates['USD']) }} GHS</div>
                         </li>
                         <li>
-                            <div class="country"><img src="{{ url_for('static', filename='images/flags/canada.png') }}" alt="Canada"> Canada (CAD)</div>
-                            <div class="rate">1 GHS = {{ exchange_rates['CAD'] }} CAD</div>
+                            <div class="country"><img src="{{ url_for('static', filename='images/flags/France.JPG') }}" alt="France"> France (EUR)</div>
+                            <div class="rate">1 EUR = {{ "%.2f"|format(exchange_rates['EUR']) }} GHS</div>
+                        </li>
+                        <li>
+                            <div class="country"><img src="{{ url_for('static', filename='images/flags/canada.JPG') }}" alt="Canada"> Canada (CAD)</div>
+                            <div class="rate">1 CAD = {{ "%.2f"|format(exchange_rates['CAD']) }} GHS</div>
                         </li>
                     </ul>
                 </div>
@@ -47,6 +51,10 @@
                         <li>
                             <div class="country">Nigeria (NGN)</div>
                             <div class="fee">{{ transfer_fees['NGN'] }}%</div>
+                        </li>
+                        <li>
+                            <div class="country">United Kingdom (GBP)</div>
+                            <div class="fee">{{ transfer_fees['GBP'] }}%</div>
                         </li>
                         <li>
                             <div class="country">USA (USD)</div>
@@ -198,16 +206,25 @@
                 const exchangeRate = exchangeRates[currency];
                 const feePercentage = transferFees[currency];
                 const feeAmount = (amount * feePercentage) / 100;
-                const receivedAmount = amount * exchangeRate;
+                const receivedAmount = amount / exchangeRate; // Correct calculation: GHS amount ÷ exchange rate = foreign currency
                 
                 sendAmountDisplay.textContent = amount.toFixed(2) + ' GHS';
                 feeAmountDisplay.textContent = feeAmount.toFixed(2) + ' GHS';
-                exchangeRateDisplay.textContent = '1 GHS = ' + exchangeRate.toFixed(2) + ' ' + currency;
-                receiveAmountDisplay.textContent = receivedAmount.toFixed(2) + ' ' + currency;
+                // Show exchange rate as 1 foreign currency = X GHS
+                if (currency === 'NGN') {
+                    exchangeRateDisplay.textContent = '1 ' + currency + ' = ' + exchangeRate.toFixed(4) + ' GHS';
+                } else {
+                    exchangeRateDisplay.textContent = '1 ' + currency + ' = ' + exchangeRate.toFixed(2) + ' GHS';
+                }
+                if (currency === 'NGN') {
+                    receiveAmountDisplay.textContent = receivedAmount.toFixed(4) + ' ' + currency;
+                } else {
+                    receiveAmountDisplay.textContent = receivedAmount.toFixed(2) + ' ' + currency;
+                }
             } else {
                 sendAmountDisplay.textContent = '0.00 GHS';
                 feeAmountDisplay.textContent = '0.00 GHS';
-                exchangeRateDisplay.textContent = '1 GHS = 0.00';
+                exchangeRateDisplay.textContent = 'Select a currency';
                 receiveAmountDisplay.textContent = '0.00';
             }
         }

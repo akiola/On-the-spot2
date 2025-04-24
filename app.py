@@ -11,11 +11,22 @@ def inject_now():
     return {'now': datetime.now()}
 
 # Current exchange rates as of April 2025 (for demo purposes)
+# These rates represent how much of GHS you get for 1 unit of foreign currency
 EXCHANGE_RATES = {
-    'NGN': 85.42,  # Nigerian Naira
-    'USD': 12.76,  # US Dollar
-    'EUR': 11.83,  # Euro (France)
-    'CAD': 9.45,   # Canadian Dollar
+    'NGN': 0.0117,  # Nigerian Naira: 1 NGN = 0.0117 GHS
+    'GBP': 15.38,   # British Pound: 1 GBP = 15.38 GHS
+    'USD': 12.82,   # US Dollar: 1 USD = 12.82 GHS
+    'EUR': 13.89,   # Euro (France): 1 EUR = 13.89 GHS
+    'CAD': 9.52,    # Canadian Dollar: 1 CAD = 9.52 GHS
+}
+
+# Inverse rates for display (how much foreign currency for 1 GHS)
+INVERSE_RATES = {
+    'NGN': 85.47,   # 1 GHS = 85.47 NGN
+    'GBP': 0.065,   # 1 GHS = 0.065 GBP
+    'USD': 0.078,   # 1 GHS = 0.078 USD
+    'EUR': 0.072,   # 1 GHS = 0.072 EUR
+    'CAD': 0.105,   # 1 GHS = 0.105 CAD
 }
 
 # Transfer fees (percentage)
@@ -24,6 +35,7 @@ TRANSFER_FEES = {
     'USD': 3.0,
     'EUR': 3.0,
     'CAD': 3.0,
+    'GBP': 3.0,
 }
 
 # Country codes to full names
@@ -32,6 +44,7 @@ COUNTRY_NAMES = {
     'USD': 'United States',
     'EUR': 'France',
     'CAD': 'Canada',
+    'GBP': 'United Kingdom',
 }
 
 @app.route('/')
@@ -97,11 +110,16 @@ def transfer():
                                       country_names=COUNTRY_NAMES)
             
             # Calculate exchange amount and fee
-            exchange_rate = EXCHANGE_RATES.get(currency, 0)
+            exchange_rate = EXCHANGE_RATES.get(currency, 0)  # This is now 1 foreign currency = X GHS
+            inverse_rate = INVERSE_RATES.get(currency, 0)    # This is 1 GHS = X foreign currency
+            
             fee_percentage = TRANSFER_FEES.get(currency, 0)
             fee_amount = (amount * fee_percentage) / 100
             total_amount = amount + fee_amount
-            received_amount = amount * exchange_rate
+            
+            # Calculate how much foreign currency the recipient will get
+            # For example: 100 GHS ÷ 12.82 GHS/USD = 7.8 USD
+            received_amount = amount / exchange_rate if exchange_rate > 0 else 0
             
             # Store transfer details in session for confirmation
             session['transfer'] = {
@@ -111,7 +129,8 @@ def transfer():
                 'recipient_name': recipient_name,
                 'recipient_account': recipient_account,
                 'payment_method': payment_method,
-                'exchange_rate': exchange_rate,
+                'exchange_rate': exchange_rate,        # 1 foreign currency = X GHS
+                'inverse_rate': inverse_rate,          # 1 GHS = X foreign currency
                 'fee_amount': fee_amount,
                 'total_amount': total_amount,
                 'received_amount': received_amount,

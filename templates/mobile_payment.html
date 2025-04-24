@@ -49,13 +49,13 @@
                 <div class="form-header">
                     <h2>
                         {% if transfer.payment_method == 'mtn' %}
-                        <img src="{{ url_for('static', filename='images/mtn.png') }}" alt="MTN">
+                        <img src="{{ url_for('static', filename='images/mtn.JPG') }}" alt="MTN">
                         MTN Mobile Money Payment
                         {% elif transfer.payment_method == 'telecel' %}
-                        <img src="{{ url_for('static', filename='images/telecel.png') }}" alt="Telecel">
+                        <img src="{{ url_for('static', filename='images/telecel.JPG') }}" alt="Telecel">
                         Telecel Money Payment
                         {% elif transfer.payment_method == 'at' %}
-                        <img src="{{ url_for('static', filename='images/at.png') }}" alt="AT">
+                        <img src="{{ url_for('static', filename='images/at.JPG') }}" alt="AT">
                         AT Money Payment
                         {% endif %}
                     </h2>

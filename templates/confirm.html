@@ -49,11 +49,11 @@
                         <h3>Recipient Gets</h3>
                         <div class="detail-row">
                             <div class="detail-label">Amount:</div>
-                            <div class="detail-value">{{ transfer.received_amount|round(2) }} {{ transfer.currency }}</div>
+                            <div class="detail-value">{% if transfer.currency == 'NGN' %}{{ transfer.received_amount|round(4) }}{% else %}{{ transfer.received_amount|round(2) }}{% endif %} {{ transfer.currency }}</div>
                         </div>
                         <div class="detail-row">
                             <div class="detail-label">Exchange Rate:</div>
-                            <div class="detail-value">1 GHS = {{ transfer.exchange_rate }} {{ transfer.currency }}</div>
+                            <div class="detail-value">1 {{ transfer.currency }} = {% if transfer.currency == 'NGN' %}{{ transfer.exchange_rate|round(4) }}{% else %}{{ transfer.exchange_rate|round(2) }}{% endif %} GHS</div>
                         </div>
                     </div>
                     
@@ -79,16 +79,16 @@
                             <div class="detail-label">Method:</div>
                             <div class="detail-value payment-method">
                                 {% if transfer.payment_method == 'mtn' %}
-                                <img src="{{ url_for('static', filename='images/mtn.png') }}" alt="MTN">
+                                <img src="{{ url_for('static', filename='images/mtn.JPG') }}" alt="MTN">
                                 <span>MTN Mobile Money</span>
                                 {% elif transfer.payment_method == 'telecel' %}
-                                <img src="{{ url_for('static', filename='images/telecel.png') }}" alt="Telecel">
+                                <img src="{{ url_for('static', filename='images/telecel.JPG') }}" alt="Telecel">
                                 <span>Telecel Money</span>
                                 {% elif transfer.payment_method == 'at' %}
-                                <img src="{{ url_for('static', filename='images/at.png') }}" alt="AT">
+                                <img src="{{ url_for('static', filename='images/at.JPG') }}" alt="AT">
                                 <span>AT Money</span>
                                 {% elif transfer.payment_method == 'card' %}
-                                <img src="{{ url_for('static', filename='images/card.png') }}" alt="Card">
+                                <img src="{{ url_for('static', filename='images/companylogo.JPG') }}" alt="Card">
                                 <span>Visa/Mastercard</span>
                                 {% endif %}
                             </div>
